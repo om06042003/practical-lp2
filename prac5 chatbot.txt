@@ -1,0 +1,32 @@
+from tkinter import *
+
+def send():
+    message = "You: " + e.get()
+    txt.insert(END, message)
+    user = e.get().strip().lower()
+    if user == "hello":
+        txt.insert(END, "\nBot: Hi\n")
+    elif user in ["hi", "hii", "hiii"]:
+        txt.insert(END, "\nBot: Hello\n")
+    elif user == "how are you":
+        txt.insert(END, "\nBot: Fine! And you?\n")
+    elif user in ["fine", "i am good", "i am doing good"]:
+        txt.insert(END, "\nBot: Great! How can I help you?\n")
+    else:
+        txt.insert(END, "\nBot: Sorry, I didn't understand that. Please try again.\n")
+    e.delete(0, END)
+
+chat = Tk()
+chat.title("CHATBOT")
+
+txt = Text(chat)
+txt.grid(row=0, column=0, columnspan=2)
+
+e = Entry(chat, width=100)
+e.grid(row=1, column=0)
+
+send_btn = Button(chat, text="Send", command=send)
+send_btn.grid(row=1, column=1)
+
+# Move the mainloop call outside the code block
+chat.mainloop()
